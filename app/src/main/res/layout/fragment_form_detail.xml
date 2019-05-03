@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.FormDetailFragment"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/nameTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_margin="16dp"
+        android:hint="@string/user_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:textColorHint="@android:color/black"
+        >
+
+       <EditText
+           android:id="@+id/userNameEditText"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:inputType="text"
+           android:textColor="@android:color/black"/>
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/emailTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_margin="16dp"
+        android:hint="@string/user_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:textColorHint="@android:color/black"
+        >
+
+        <EditText
+            android:id="@+id/emailEditText"
+            style="@style/MyMaterialTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:backgroundTint="@android:color/black"
+            android:drawableStart="@drawable/ic_mail"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:textColor="@android:color/black"
+            tools:ignore="MissingPrefix" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/phoneTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_margin="16dp"
+        android:hint="@string/user_phone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:textColorHint="@android:color/black"
+        >
+
+        <EditText
+            android:id="@+id/phoneEditText"
+            style="@style/MyMaterialTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:backgroundTint="@android:color/black"
+            android:drawableStart="@drawable/ic_phone_call"
+            android:inputType="phone"
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:textColor="@android:color/black"
+            tools:ignore="MissingPrefix" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/addDataButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/oval_shape_for_button"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:text="@string/add_data"
+        android:textColor="@color/textColorPrimary" />
+</LinearLayout>
+</LinearLayout>

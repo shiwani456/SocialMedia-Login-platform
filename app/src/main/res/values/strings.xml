@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">ContactDisplay</string>
+    <string name="facebook_app_id">2337007579917462</string>
+    <string name="fb_login_protocol_scheme">fb2337007579917462</string>
+    <string name="twitter_consumer_key">3UiSkOyQyJQUXQmqFHzuN97hZ</string>
+    <string name="twitter_consumer_secret">OjMBdbFlG0S0zqhQ7U6lu3FHlVm6F56onRshbXMFgT6SJvcKlm</string>
+    <string name="google_client_id">504278826096-fa63hd2ekohucmrd7lgqg6cler28apng.apps.googleusercontent.com</string>
+    <string name="title_activity_landing">LandingActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_data">Add Data</string>
+    <string name="user_name">User Name</string>
+    <string name="user_email">User Email</string>
+    <string name="user_phone">Mobile Number</string>
+    <string name="error_msg_name">Empty!!</string>
+    <string name="error_msg_email">Wrong Email</string>
+    <string name="error_msg_phone_no">Invalid Phone Number</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_about_us">About Us</string>
+    <string name="menu_view_my_location">View My Location</string>
+    <string name="menu_contact_list">Contact List</string>
+    <string name="menu_update_profile">Update Profile</string>
+    <string name="menu_logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>
