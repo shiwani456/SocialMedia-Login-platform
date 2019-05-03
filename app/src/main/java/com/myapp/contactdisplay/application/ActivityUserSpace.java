@@ -70,10 +70,21 @@ public class ActivityUserSpace {
 
     }
 
-    public void setUserPhone(int  phone) {
+    public void setUserPhone(String  phone) {
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
-        sharedPreferencesEditor.putInt("phone",phone);
+        sharedPreferencesEditor.putString("phone",phone);
         sharedPreferencesEditor.apply();
     }
+    public String getUserImageUrl(){
+        return sharedPreferences.getString("url", null);
+
+    }
+
+    public void setUserImageUrl(String url) {
+        SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
+        sharedPreferencesEditor.putString("url", url);
+        sharedPreferencesEditor.apply();
+    }
+
 
 }

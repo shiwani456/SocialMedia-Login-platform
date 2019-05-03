@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.FormDetailFragment"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.FormDetailFragment">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_gravity="center"
-    android:gravity="center">
+    android:orientation="vertical">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/nameTextInputLayout"
@@ -109,4 +108,5 @@
         android:text="@string/add_data"
         android:textColor="@color/textColorPrimary" />
 </LinearLayout>
-</LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

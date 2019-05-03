@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
+import com.twitter.sdk.android.core.Twitter;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -51,7 +51,6 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 import retrofit2.Call;
-import twitter4j.Twitter;
 import twitter4j.User;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
@@ -70,13 +69,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onCreate(savedInstanceState);
         session = new ActivityUserSpace(this).getInstance(MainActivity.this);
         FacebookSdk.sdkInitialize(getApplicationContext());
-
+        Twitter.initialize(MainActivity.this);
         setContentView(R.layout.activity_main);
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(
-                getString(R.string.twitter_consumer_key),
-                getString(R.string.twitter_consumer_secret));
-
-
         login_button = findViewById(R.id.login_button);
         twitterLoginButton = findViewById(R.id.twitterLoginButton);
         facebookLogin();
@@ -144,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             String email = acct.getEmail();
             session.setUserName(personName);
             session.setUserEmail(email);
+            session.setUserImageUrl(personPhotoUrl);
 
             Log.e("data", "Name: " + personName + ", email: " + email
                     + ", Image: " + personPhotoUrl);
@@ -214,11 +209,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     String email = object.getString("email");
                     /* val user_mobile_phone = `object`.getString("user_mobile_phone ")*/
                     String id = object.getString("id");
+                    String image_url = "https://graph.facebook.com/$id/picture?type=normal";
+
 
 
                     session.setUserName(first_name + " " + last_name);
                     session.setUserEmail(email);
-
+                    session.setUserImageUrl(image_url);
                     /* session!!.setUserMobilePhone(user_mobile_phone)*/
 
                 } catch (JSONException e) {

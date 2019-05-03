@@ -15,12 +15,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="28dp"
         android:gravity="center">
-    <com.twitter.sdk.android.core.identity.TwitterLoginButton
-        android:id="@+id/twitterLoginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:gravity="center" />
+
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
@@ -28,6 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:gravity="center" />
+        <com.twitter.sdk.android.core.identity.TwitterLoginButton
+            android:id="@+id/twitterLoginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:gravity="center" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

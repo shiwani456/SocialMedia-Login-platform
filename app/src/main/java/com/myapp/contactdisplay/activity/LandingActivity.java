@@ -15,7 +15,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.FirebaseApp;
 import com.myapp.contactdisplay.R;
 import com.myapp.contactdisplay.application.ActivityUserSpace;
 import com.myapp.contactdisplay.fragment.AboutUsFragment;
@@ -31,8 +37,10 @@ public class LandingActivity extends AppCompatActivity implements NavigationView
     private NavigationView navigationView;
     private Toolbar toolbar;
     private FloatingActionButton fab;
-    private ActivityUserSpace session  = null;
-
+    private ActivityUserSpace session = null;
+    private View header;
+    private TextView nameDisplayTextView;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class LandingActivity extends AppCompatActivity implements NavigationView
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
         displayView(0);
     }
 
@@ -54,7 +63,19 @@ public class LandingActivity extends AppCompatActivity implements NavigationView
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        header = navigationView.getHeaderView(0);
         toolbar = findViewById(R.id.toolbar);
+        imageView = (ImageView) header.findViewById(R.id.imageView);
+        nameDisplayTextView = header.findViewById(R.id.nameDisplayTextView);
+        if (session.getUserImageUrl() != null) {
+
+            Glide.with(LandingActivity.this)
+                    .load(session.getUserImageUrl())
+                    .apply(RequestOptions.centerCropTransform().circleCrop())
+                    .into(imageView);
+        }
+
+        nameDisplayTextView.setText(session.getUserName());
 
 
     }
@@ -151,7 +172,8 @@ public class LandingActivity extends AppCompatActivity implements NavigationView
                 fragment = ContactListFragment.newInstance();
                 break;
             case 3:
-
+                Intent i = new Intent(LandingActivity.this, MapsActivity.class);
+                startActivity(i);
 
                 break;
             case 4:

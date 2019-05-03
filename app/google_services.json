@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "504278826096",
+    "firebase_url": "https://contactdisplay-1556734758925.firebaseio.com",
+    "project_id": "contactdisplay-1556734758925",
+    "storage_bucket": "contactdisplay-1556734758925.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504278826096:android:8d32e616ab7b0a81",
+        "android_client_info": {
+          "package_name": "com.myapp.contactdisplay.activity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504278826096-d26tt7v0plbjsl6aib564b38bvm2vn4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRDNqInZfoFLMDx0DQo8Pt89V5wJktUNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504278826096-d26tt7v0plbjsl6aib564b38bvm2vn4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,17 +1,27 @@
 package com.myapp.contactdisplay.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.myapp.contactdisplay.R;
+import com.myapp.contactdisplay.activity.VerifyPhoneActivity;
 import com.myapp.contactdisplay.application.ActivityUserSpace;
 
 /**
@@ -30,6 +40,7 @@ public class UpdateProfileFragment extends Fragment {
     private ImageView userProfileImageView;
     private TextView userNameTextView, userEmailTextView, userPhoneTextView;
     private ActivityUserSpace session = null;
+    private Button verificationButton;
     private EditText userPhoneEditText, userEmailEditText;
 
     // TODO: Rename and change types of parameters
@@ -73,33 +84,111 @@ public class UpdateProfileFragment extends Fragment {
         userNameTextView.setText(session.getUserName());
         if (session.getUserEmail() == null) {
 
-            userEmailTextView.setVisibility(View.GONE);
-            userEmailEditText.setVisibility(View.VISIBLE);
         } else {
-            userEmailTextView.setVisibility(View.VISIBLE);
             userEmailTextView.setText(session.getUserEmail());
-            userEmailEditText.setVisibility(View.GONE);
         }
         if (session.getUserPhone() == null) {
 
-            userPhoneTextView.setVisibility(View.GONE);
-            userPhoneEditText.setVisibility(View.VISIBLE);
+
         } else {
-            userPhoneTextView.setVisibility(View.VISIBLE);
-            userPhoneTextView.setText(session.getUserPhone());
-            userEmailEditText.setVisibility(View.GONE);
+         //    userPhoneTextView.setText("+91"+session.getUserPhone());
+
         }
+        userPhoneEditText.addTextChangedListener(new MyTextWatcher(userPhoneEditText));
+        verificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String no = userPhoneEditText.getText().toString();
+                if (submitForm()) {
+//                    userPhoneTextView.setText(no);
+                    session.setUserPhone(no);
+                    Intent intent = new Intent(getActivity(), VerifyPhoneActivity.class);
+                    intent.putExtra("mobile", no);
+                    startActivity(intent);
+
+                }
+
+            }
+        });
+
+
         return view;
 
     }
 
+
     private void init(View view) {
         userProfileImageView = view.findViewById(R.id.userProfileImageView);
         userNameTextView = view.findViewById(R.id.userNameTextView);
+        verificationButton = view.findViewById(R.id.verificationButton);
         userEmailTextView = view.findViewById(R.id.userEmailTextView);
         userPhoneEditText = view.findViewById(R.id.userPhoneEditText);
-        userEmailEditText = view.findViewById(R.id.userEmailEditText);
+        Glide.with(getActivity())
+                .load(session.getUserImageUrl())
+                .apply(RequestOptions.centerCropTransform().circleCrop())
+                .into(userProfileImageView);
 
+    }
+
+    private boolean submitForm() {
+
+
+        if (!validatePhoneNo()) {
+            return false;
+        }
+
+
+        return true;
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
+    private boolean isValidPhoneNumber(CharSequence phoneNumber) {
+        return !TextUtils.isEmpty(phoneNumber) && Patterns.PHONE.matcher(phoneNumber).matches();
+    }
+
+    private boolean validatePhoneNo() {
+        String phone = userPhoneEditText.getText().toString().trim();
+        if (phone.isEmpty() || !isValidPhoneNumber(phone) || phone.length() != 10) {
+            userPhoneEditText.setError("Enter a valid mobile");
+            requestFocus(userPhoneEditText);
+            return false;
+        } else {
+            return true;
+
+        }
+
+    }
+
+    private class MyTextWatcher implements TextWatcher {
+
+        private View view;
+
+        private MyTextWatcher(View view) {
+            this.view = view;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            switch (view.getId()) {
+                case R.id.userPhoneEditText:
+                    validatePhoneNo();
+                    break;
+            }
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

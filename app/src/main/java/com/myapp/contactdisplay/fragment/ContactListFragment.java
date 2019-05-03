@@ -43,7 +43,7 @@ public class ContactListFragment extends Fragment {
     private Cursor cursor;
     private SQLiteDatabase SQLITEDATABASE;
     private SQLiteListAdapter ListAdapter;
-    private DBHelper mydb = new DBHelper(getActivity());
+    private DBHelper mydb;
     ;
     private Button getdetailButton;
 
@@ -82,20 +82,19 @@ public class ContactListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contact_list, container, false);
         init(view);
-     /*   getdetailButton.setOnClickListener(new View.OnClickListener() {
+        mydb =  new DBHelper(getActivity());
+   /*     getdetailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowSQLiteDBdata();
+                displayData();
             }
-        });*/
-
+        });
+*/
         return view;
     }
 
     private void init(View view) {
         dataListView = view.findViewById(R.id.dataListView);
-        getdetailButton = view.findViewById(R.id.getdetailButton);
-
 
     }
 
@@ -136,7 +135,7 @@ public class ContactListFragment extends Fragment {
     }
     @Override
     public void onResume() {
-        displayData();
+displayData();
         super.onResume();
     }
     private void displayData() {
@@ -148,7 +147,7 @@ public class ContactListFragment extends Fragment {
         if (cursor.moveToFirst()) {
             do {
                 userName.add(cursor.getString(cursor.getColumnIndex("name")));
-                userEmail.add(cursor.getString(cursor.getColumnIndex("mail")));
+                userEmail.add(cursor.getString(cursor.getColumnIndex("email")));
                 userPhone.add(cursor.getString(cursor.getColumnIndex("phone")));
             } while (cursor.moveToNext());
         }
