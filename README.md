@@ -13,3 +13,4 @@ After login, a user will get two tabs in tab layout on the home page. One tab wi
     Another Tab will Reflect all the entries which we did as per the current example it should reflect both the entries. 
 
 Create a navigation drawer on the home page. It will show user's profile image and name on top and options like Logout, View My location, About Us, Contact List and Update profile.
+Firebase for OTP verification
